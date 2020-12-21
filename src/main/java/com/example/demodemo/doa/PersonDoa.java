@@ -1,0 +1,26 @@
+package com.example.demodemo.doa;
+
+import com.example.demodemo.model.Person;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
+public interface PersonDoa {
+
+    int insertPerson(UUID id, Person person);
+
+    default int insertPerson(Person person){
+        UUID id =UUID.randomUUID();
+        return insertPerson(id, person);
+    }
+    List<Person> getAllPeople();
+
+    Optional<Person> getPersonById(UUID id);
+
+    int deletePersonById(UUID id);
+
+    int updatePerson(UUID id, Person person);
+
+
+}
